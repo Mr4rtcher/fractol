@@ -6,7 +6,7 @@
 /*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 12:21:20 by jabilbo           #+#    #+#             */
-/*   Updated: 2020/07/03 18:37:32 by jabilbo          ###   ########.fr       */
+/*   Updated: 2020/07/03 21:30:32 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void				mandelbrot(t_mlx mlx)
 		(cor.max.re - cor.min.re) / (WIDTH - 1),
 		(cor.max.im - cor.min.im) / (HEIGHT - 1));
 	
-	cor.max_iteration = 50;
+	cor.max_iteration = 60;
 	
 	cor.y = 0;
 	
@@ -54,8 +54,7 @@ void				mandelbrot(t_mlx mlx)
     				2.0 * z.re * z.im + cor.c.im);
 				iteration++;
 			}
-			if (stop)
-				draw(cor, mlx);
+				draw(cor, mlx, iteration);	
 			cor.x++;
 		}
 		cor.y++;
