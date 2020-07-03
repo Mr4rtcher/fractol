@@ -6,7 +6,7 @@
 #    By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/01 04:59:36 by jabilbo           #+#    #+#              #
-#    Updated: 2020/07/01 05:22:20 by jabilbo          ###   ########.fr        #
+#    Updated: 2020/07/03 16:58:11 by jabilbo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,9 @@ NAME = fractol
 
 DEPS = *.h
 DEPSDIR = includes
-SRC = main.c
+SRC = main.c\
+	mandelbrot.c\
+	draw.c
 SRCDIR = srcs
 OBJ = $(SRC:.c=.o)
 CC = /usr/bin/gcc
