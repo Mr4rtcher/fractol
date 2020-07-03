@@ -6,7 +6,7 @@
 #    By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/01 04:59:36 by jabilbo           #+#    #+#              #
-#    Updated: 2020/07/03 16:58:11 by jabilbo          ###   ########.fr        #
+#    Updated: 2020/07/03 18:18:50 by jabilbo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ DEPS = *.h
 DEPSDIR = includes
 SRC = main.c\
 	mandelbrot.c\
-	draw.c
+	draw.c\
+	init.c
 SRCDIR = srcs
 OBJ = $(SRC:.c=.o)
 CC = /usr/bin/gcc

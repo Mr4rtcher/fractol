@@ -6,7 +6,7 @@
 /*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 06:11:05 by jabilbo           #+#    #+#             */
-/*   Updated: 2020/07/03 17:42:26 by jabilbo          ###   ########.fr       */
+/*   Updated: 2020/07/03 18:38:54 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 # define FRACTOL_H
 
-# define WIDTH		1000
-# define HEIGHT		1000
+# define WIDTH		1500
+# define HEIGHT		1500
 
 # include <libft.h>
 # include <mlx.h>
@@ -46,5 +46,6 @@ typedef struct		s_mlx
 
 void				mandelbrot(t_mlx mlx);
 void				draw(t_fractol cor, t_mlx mlx);
+t_complex			init_complex(double re, double im);
 
 #endif

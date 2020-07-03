@@ -6,7 +6,7 @@
 /*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 12:21:20 by jabilbo           #+#    #+#             */
-/*   Updated: 2020/07/03 17:50:37 by jabilbo          ###   ########.fr       */
+/*   Updated: 2020/07/03 18:37:32 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,40 +16,43 @@ void				mandelbrot(t_mlx mlx)
 {
 	t_complex		z;
 	t_fractol		cor;
-	double			n;
+	double			iteration;
 	bool			stop;
-	cor.min.re = -2.0;
+	
 	cor.max.re = 2.0;
-	cor.min.im = -2.0;
-	cor.max.im = cor.min.im + (cor.max.re - cor.min.re) * 500 / 500;
-	cor.factor.re = (cor.max.re - cor.min.re) / (500 - 1);
-	cor.factor.im = (cor.max.im - cor.min.im) / (500 - 1);
+	cor.min = init_complex(-2.0, -2.0);
+	cor.max.im = cor.min.im + (cor.max.re - cor.min.re) * HEIGHT / WIDTH;
+	cor.factor = init_complex(
+		(cor.max.re - cor.min.re) / (WIDTH - 1),
+		(cor.max.im - cor.min.im) / (HEIGHT - 1));
+	
 	cor.max_iteration = 50;
+	
 	cor.y = 0;
 	
-	while (cor.y < 500)
+	while (cor.y < HEIGHT)
 	{
 		cor.c.im = cor.max.im - cor.y * cor.factor.im;
 		cor.x = 0;
 		
-		while (cor.x < 500)
+		while (cor.x < WIDTH)
 		{
 			cor.c.re = cor.min.re + cor.x * cor.factor.re;
-			z.re = cor.c.re;
-			z.im = cor.c.im;
+			z = init_complex(cor.c.re, cor.c.im);
 			stop = true;
-			n = 0;
+			iteration = 0;
 
-			while(n < cor.max_iteration)
+			while(iteration < cor.max_iteration)
 			{
-				if(z.re * z.re + z.im * z.im > 4)
+				if(z.re * z.re + z.im * z.im >= 4)
 				{
 					stop = false;
 					break;
 				}
-				z.im = 2 * z.re * z.im + cor.c.im;
-				z.re = z.re * z.re - z.im * z.im + cor.c.re;
-				n++;
+				z = init_complex(
+                	pow(z.re, 2.0) - pow(z.im, 2.0) + cor.c.re,
+    				2.0 * z.re * z.im + cor.c.im);
+				iteration++;
 			}
 			if (stop)
 				draw(cor, mlx);
