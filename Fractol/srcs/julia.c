@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/01 12:21:20 by jabilbo           #+#    #+#             */
-/*   Updated: 2020/07/04 21:39:23 by jabilbo          ###   ########.fr       */
+/*   Created: 2020/07/04 21:22:21 by jabilbo           #+#    #+#             */
+/*   Updated: 2020/07/04 21:40:06 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void				mandelbrot(t_mlx mlx)
+void	julia(t_mlx mlx)
 {
 	t_complex		z;
 	t_fractol		cor;
@@ -31,13 +31,13 @@ void				mandelbrot(t_mlx mlx)
 	
 	while (cor.y < HEIGHT)
 	{
-		cor.c.im = cor.max.im - cor.y * cor.factor.im;
+		cor.k.im = cor.max.im - cor.y * cor.factor.im;
 		cor.x = 0;
 		
 		while (cor.x < WIDTH)
 		{
-			cor.c.re = cor.min.re + cor.x * cor.factor.re;
-			z = init_complex(cor.c.re, cor.c.im);
+			cor.k.re = cor.min.re + cor.x * cor.factor.re;
+			z = init_complex(cor.k.re, cor.k.im);
 			iteration = 0;
 
 			while(iteration < cor.max_iteration)
@@ -45,8 +45,8 @@ void				mandelbrot(t_mlx mlx)
 				if(z.re * z.re + z.im * z.im >= 4)
 					break;
 				z = init_complex(
-				pow(z.re, 2.0) - pow(z.im, 2.0) + cor.c.re,
-					2.0 * z.re * z.im + cor.c.im);
+				pow(z.re, 2.0) - pow(z.im, 2.0) + cor.k.re,
+					2.0 * z.re * z.im + cor.k.im);
 				iteration++;
 			}
 				draw(cor, mlx, iteration);

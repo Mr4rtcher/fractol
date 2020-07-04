@@ -6,7 +6,7 @@
 #    By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/01 04:59:36 by jabilbo           #+#    #+#              #
-#    Updated: 2020/07/03 18:18:50 by jabilbo          ###   ########.fr        #
+#    Updated: 2020/07/04 21:28:35 by jabilbo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ DEPSDIR = includes
 SRC = main.c\
 	mandelbrot.c\
 	draw.c\
-	init.c
+	init.c\
+	julia.c
 SRCDIR = srcs
 OBJ = $(SRC:.c=.o)
 CC = /usr/bin/gcc

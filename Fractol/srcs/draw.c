@@ -6,7 +6,7 @@
 /*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/02 11:37:44 by jabilbo           #+#    #+#             */
-/*   Updated: 2020/07/03 21:40:38 by jabilbo          ###   ########.fr       */
+/*   Updated: 2020/07/03 22:12:37 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int				get_color(int iteration, t_fractol cor)
 		color = 0x000000;}
 	else
 	{
-		color = 0xFF0000 / t;
+		color = 0xFF0000 * t;
 	}
 	
 	return (color);
