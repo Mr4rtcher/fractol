@@ -6,52 +6,42 @@
 /*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 21:22:21 by jabilbo           #+#    #+#             */
-/*   Updated: 2020/07/04 21:40:06 by jabilbo          ###   ########.fr       */
+/*   Updated: 2020/07/06 18:09:11 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	julia(t_mlx mlx)
+void				julia(t_fractol *fractol)
 {
 	t_complex		z;
-	t_fractol		cor;
 	double			iteration;
 	
-	cor.max.re = 2.0;
-	cor.min = init_complex(-2.0, -2.0);
-	cor.max.im = cor.min.im + (cor.max.re - cor.min.re) * HEIGHT / WIDTH;
-	cor.factor = init_complex(
-		(cor.max.re - cor.min.re) / (WIDTH - 1),
-		(cor.max.im - cor.min.im) / (HEIGHT - 1));
+	fractol->y = 0;
 	
-	cor.max_iteration = 60;
-	
-	cor.y = 0;
-	
-	while (cor.y < HEIGHT)
+	while (fractol->y < HEIGHT)
 	{
-		cor.k.im = cor.max.im - cor.y * cor.factor.im;
-		cor.x = 0;
+		fractol->k.im = fractol->max.im - fractol->y * fractol->factor.im;
+		fractol->x = 0;
 		
-		while (cor.x < WIDTH)
+		while (fractol->x < WIDTH)
 		{
-			cor.k.re = cor.min.re + cor.x * cor.factor.re;
-			z = init_complex(cor.k.re, cor.k.im);
+			fractol->k.re = fractol->min.re + fractol->x * fractol->factor.re;
+			z = init_complex(fractol->k.re, fractol->k.im);
 			iteration = 0;
 
-			while(iteration < cor.max_iteration)
+			while(iteration < fractol->max_iteration)
 			{
 				if(z.re * z.re + z.im * z.im >= 4)
 					break;
 				z = init_complex(
-				pow(z.re, 2.0) - pow(z.im, 2.0) + cor.k.re,
-					2.0 * z.re * z.im + cor.k.im);
+				pow(z.re, 2.0) - pow(z.im, 2.0) + fractol->k.re,
+					2.0 * z.re * z.im + fractol->k.im);
 				iteration++;
 			}
-				draw(cor, mlx, iteration);
-			cor.x++;
+				draw(fractol, iteration);
+			fractol->x++;
 		}
-		cor.y++;
+		fractol->y++;
 	}
 }
