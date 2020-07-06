@@ -6,7 +6,7 @@
 /*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 04:17:01 by jabilbo           #+#    #+#             */
-/*   Updated: 2020/07/06 18:09:20 by jabilbo          ###   ########.fr       */
+/*   Updated: 2020/07/06 21:42:01 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void				set_defaults(t_fractol *fractol)
 	fractol->min = init_complex(-2.0, -2.0);
 	fractol->max.re = 2.0;
 	fractol->max.im = fractol->min.im + (fractol->max.re - fractol->min.re) * HEIGHT / WIDTH;
-		fractol->factor = init_complex(
+	fractol->factor = init_complex(
 		(fractol->max.re - fractol->min.re) / (WIDTH - 1),
 		(fractol->max.im - fractol->min.im) / (HEIGHT - 1));
 	fractol->k = init_complex(-0.4, 0.6);
@@ -38,7 +38,7 @@ static void			start(char *name)
 	if (ft_strcmp(str_m, name) == 0)
 		mandelbrot(fractol);
 	if (ft_strcmp(str_j, name) == 0)
-		julia(fractol);
+		mlx_hook(fractol->wim_ptr, 6, 0, julia, fractol);
 	mlx_loop(fractol->mlx_ptr);
 }
 

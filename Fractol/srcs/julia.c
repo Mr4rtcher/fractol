@@ -6,28 +6,30 @@
 /*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 21:22:21 by jabilbo           #+#    #+#             */
-/*   Updated: 2020/07/06 18:09:11 by jabilbo          ###   ########.fr       */
+/*   Updated: 2020/07/06 21:43:26 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void				julia(t_fractol *fractol)
+int					julia(int x, int y, t_fractol *fractol)
 {
 	t_complex		z;
 	double			iteration;
 	
 	fractol->y = 0;
-	
+	fractol->k = init_complex(
+		4 * ((double)x / WIDTH - 0.5),
+		4 * ((double)(HEIGHT - y) / HEIGHT - 0.5));
 	while (fractol->y < HEIGHT)
 	{
-		fractol->k.im = fractol->max.im - fractol->y * fractol->factor.im;
+		fractol->c.im = fractol->max.im - fractol->y * fractol->factor.im;
 		fractol->x = 0;
 		
 		while (fractol->x < WIDTH)
 		{
-			fractol->k.re = fractol->min.re + fractol->x * fractol->factor.re;
-			z = init_complex(fractol->k.re, fractol->k.im);
+			fractol->c.re = fractol->min.re + fractol->x * fractol->factor.re;
+			z = init_complex(fractol->c.re, fractol->c.im);
 			iteration = 0;
 
 			while(iteration < fractol->max_iteration)
@@ -44,4 +46,5 @@ void				julia(t_fractol *fractol)
 		}
 		fractol->y++;
 	}
+	return (0);
 }
