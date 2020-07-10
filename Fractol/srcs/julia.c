@@ -6,21 +6,18 @@
 /*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 21:22:21 by jabilbo           #+#    #+#             */
-/*   Updated: 2020/07/06 21:43:26 by jabilbo          ###   ########.fr       */
+/*   Updated: 2020/07/10 06:49:08 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int					julia(int x, int y, t_fractol *fractol)
+int					julia(t_fractol *fractol)
 {
 	t_complex		z;
 	double			iteration;
 	
 	fractol->y = 0;
-	fractol->k = init_complex(
-		4 * ((double)x / WIDTH - 0.5),
-		4 * ((double)(HEIGHT - y) / HEIGHT - 0.5));
 	while (fractol->y < HEIGHT)
 	{
 		fractol->c.im = fractol->max.im - fractol->y * fractol->factor.im;
@@ -46,5 +43,14 @@ int					julia(int x, int y, t_fractol *fractol)
 		}
 		fractol->y++;
 	}
+	return (0);
+}
+
+int					julia_motion(int x, int y, t_fractol *fractol)
+{
+	fractol->k = init_complex(
+		4 * ((double)x / WIDTH - 0.5),
+		4 * ((double)(HEIGHT - y) / HEIGHT - 0.5));
+	julia(fractol);
 	return (0);
 }
