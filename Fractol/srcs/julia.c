@@ -6,7 +6,7 @@
 /*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 21:22:21 by jabilbo           #+#    #+#             */
-/*   Updated: 2020/07/10 06:49:08 by jabilbo          ###   ########.fr       */
+/*   Updated: 2020/07/20 13:01:39 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,12 @@ int					julia(t_fractol *fractol)
 
 int					julia_motion(int x, int y, t_fractol *fractol)
 {
+	if (!fractol->fix_jul)
+	{
 	fractol->k = init_complex(
 		4 * ((double)x / WIDTH - 0.5),
 		4 * ((double)(HEIGHT - y) / HEIGHT - 0.5));
-	julia(fractol);
+		julia(fractol);
+	}
 	return (0);
 }
