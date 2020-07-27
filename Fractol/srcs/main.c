@@ -6,7 +6,7 @@
 /*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 04:17:01 by jabilbo           #+#    #+#             */
-/*   Updated: 2020/07/20 13:29:55 by jabilbo          ###   ########.fr       */
+/*   Updated: 2020/07/27 18:20:44 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,19 @@ int					ft_close(void *param)
 	(void)param;
 	exit(0);
 }
+
+void				init_fractol(t_fractol *fractol)
+{
+	char			str_m[] = "mandelbrot";
+	char			str_j[] = "julia";
+
+	if (ft_strcmp(str_m, fractol->name) == 0)
+		mandelbrot(fractol);
+	else if (ft_strcmp(str_j, fractol->name) == 0)
+		mlx_hook(fractol->win_ptr, 6, 0, julia_motion, fractol);
+	else
+		exit(0);
+}
 static void			start(char *name)
 {
 	t_fractol		*fractol;
@@ -24,17 +37,13 @@ static void			start(char *name)
 	if (!(fractol = (t_fractol *)ft_memalloc(sizeof(t_fractol))))
 		exit(1);
 	fractol->name = name;
-	char			str_m[] = "mandelbrot";
-	char			str_j[] = "julia";
 	fractol->mlx_ptr = mlx_init();
 	fractol->win_ptr = mlx_new_window(fractol->mlx_ptr, HEIGHT, WIDTH, fractol->name);
 	set_defaults(fractol);
 	mlx_hook(fractol->win_ptr, 2, 0, key_press, fractol);
 	mlx_hook(fractol->win_ptr, 17, 0, ft_close, fractol);
-	if (ft_strcmp(str_m, fractol->name) == 0)
-		mandelbrot(fractol);
-	if (ft_strcmp(str_j, fractol->name) == 0)
-		mlx_hook(fractol->win_ptr, 6, 0, julia_motion, fractol);
+	draw(fractol);
+	// init_fractol(fractol);
 	mlx_loop(fractol->mlx_ptr);
 }
 

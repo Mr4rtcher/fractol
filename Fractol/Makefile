@@ -6,7 +6,7 @@
 #    By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/01 04:59:36 by jabilbo           #+#    #+#              #
-#    Updated: 2020/07/20 12:57:41 by jabilbo          ###   ########.fr        #
+#    Updated: 2020/07/27 16:54:27 by jabilbo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,11 +19,12 @@ SRC = main.c\
 	draw.c\
 	init.c\
 	julia.c\
-	keyboard.c
+	keyboard.c\
+	mouse.c
 SRCDIR = srcs
 OBJ = $(SRC:.c=.o)
 CC = /usr/bin/gcc
-CCFLAGS = -Wall -Wextra -Werror
+CCFLAGS = -Wall -Wextra -Werror -O3
 RM = /bin/rm
 RMFLAGS = -f
 LIB = ft
