@@ -6,7 +6,7 @@
 /*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 04:17:01 by jabilbo           #+#    #+#             */
-/*   Updated: 2020/07/29 16:35:31 by jabilbo          ###   ########.fr       */
+/*   Updated: 2020/08/05 21:55:46 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,24 @@ int					ft_close(void *param)
 	exit(0);
 }
 
-void				init_fractol(t_fractol *fractol)
+void				terminate(char *s)
+{
+	ft_putendl_fd(s, 2);
+	exit(0);
+}
+
+int					init_fractol(t_fractol *fractol)
 {
 	char			str_m[] = "mandelbrot";
 	char			str_j[] = "julia";
 
 	if (ft_strcmp(str_m, fractol->name) == 0)
-		mandelbrot(fractol);
+		return (mandelbrot(fractol));
 	else if (ft_strcmp(str_j, fractol->name) == 0)
-		julia(fractol);
+		return (julia(fractol));
 	else
-		exit(0);
+		terminate("ERROR");
+	return (0);
 }
 
 static void			start(char *name)
@@ -36,15 +43,19 @@ static void			start(char *name)
 	t_fractol		*fractol;
 	
 	if (!(fractol = (t_fractol *)ft_memalloc(sizeof(t_fractol))))
-		exit(1);
+		terminate("ERROR");;
 	fractol->name = name;
 	fractol->mlx_ptr = mlx_init();
-	fractol->win_ptr = mlx_new_window(fractol->mlx_ptr, HEIGHT, WIDTH, fractol->name);
+	if (!(fractol->win_ptr = mlx_new_window(fractol->mlx_ptr, HEIGHT, WIDTH, fractol->name)))
+		terminate("ERROR");
+	fractol->image = init_image(fractol->mlx_ptr);
+	fractol->fix_jul = true;
 	set_defaults(fractol);
 	mlx_hook(fractol->win_ptr, 2, 0, key_press, fractol);
 	mlx_hook(fractol->win_ptr, 17, 0, ft_close, fractol);
-	mlx_hook(fractol->win_ptr, 6, 0, julia_motion, fractol);
 	mlx_hook(fractol->win_ptr, 4, 0, zoom, fractol);
+	if (ft_strequ(name, "julia"))
+		mlx_hook(fractol->win_ptr, 6, 0, julia_motion, fractol);
 	draw(fractol);
 	mlx_loop(fractol->mlx_ptr);
 }

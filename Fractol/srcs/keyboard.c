@@ -6,7 +6,7 @@
 /*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 12:56:06 by jabilbo           #+#    #+#             */
-/*   Updated: 2020/07/29 19:14:13 by jabilbo          ###   ########.fr       */
+/*   Updated: 2020/08/05 22:52:52 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,18 +68,19 @@ int				key_press(int key, t_fractol *fractol)
 		exit(0);
 	if (key == MAIN_PAD_SPACE)
 		fractol->fix_jul = !fractol->fix_jul;
-	if (key == MAIN_PAD_PLUS)
+	if (key == MAIN_PAD_PLUS && fractol->max_iteration < 1000)
 		fractol->max_iteration++;
 	else if (key == MAIN_PAD_MINUS)
 		fractol->max_iteration--;
 	if (key == 85 || key == 83 || key == 84
 		|| key == 86 || key == 88 || key == 87
-		|| key == 89 || key == 91 || key == 90)
+		|| key == 89 || key == 91 || key == 92)
 		color_key(key, fractol);
 	if (key == ARROW_DOWN || key == ARROW_LEFT
 		|| key == ARROW_RIGHT || key == ARROW_UP)
 		move(key, fractol);
+	if (key == 15)
+		set_defaults(fractol);	
 	draw(fractol);
-	printf("%d", key);
 	return (0);
 }
