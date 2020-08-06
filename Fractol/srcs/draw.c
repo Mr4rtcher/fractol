@@ -6,7 +6,7 @@
 /*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/02 11:37:44 by jabilbo           #+#    #+#             */
-/*   Updated: 2020/08/05 22:10:16 by jabilbo          ###   ########.fr       */
+/*   Updated: 2020/08/06 17:03:02 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,6 @@ void			draw(t_fractol *fractol)
 	 		terminate("ERROR");
 	mlx_put_image_to_window(fractol->mlx_ptr, fractol->win_ptr,
 		fractol->image->image, 0, 0);
-	mlx_string_put(fractol->mlx_ptr, fractol->win_ptr, 900, 965, COLOR_TUNDORA,
-		"H - Help");
 }
 
 t_color			get_color(int iteration, t_fractol *fractol)
@@ -99,6 +97,5 @@ t_color			get_color(int iteration, t_fractol *fractol)
 		color.channel[2] = 0;
 		color.channel[3] = 0;
 	}
-	
 	return (color);
 }

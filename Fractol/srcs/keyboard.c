@@ -6,7 +6,7 @@
 /*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 12:56:06 by jabilbo           #+#    #+#             */
-/*   Updated: 2020/08/05 22:52:52 by jabilbo          ###   ########.fr       */
+/*   Updated: 2020/08/06 17:49:22 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int				key_press(int key, t_fractol *fractol)
 		|| key == ARROW_RIGHT || key == ARROW_UP)
 		move(key, fractol);
 	if (key == 15)
-		set_defaults(fractol);	
+		set_defaults(fractol);
 	draw(fractol);
 	return (0);
 }

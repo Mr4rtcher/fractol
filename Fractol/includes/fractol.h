@@ -6,7 +6,7 @@
 /*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 06:11:05 by jabilbo           #+#    #+#             */
-/*   Updated: 2020/08/05 22:17:48 by jabilbo          ###   ########.fr       */
+/*   Updated: 2020/08/06 17:42:01 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,6 @@
 # define ARROW_RIGHT		124
 
 # define THREADS			8
-
-# define RGB(r, g, b) (256 * 256 * (int)(r) + 256 * (int)(g) + (int)(b))
-# define COLOR_TUNDORA		0x444444
 
 # include <libft.h>
 # include <mlx.h>
@@ -82,6 +79,9 @@ typedef struct		s_fractol
 
 int					mandelbrot(t_fractol *fractol);
 int					julia(t_fractol *fractol);
+int					burning_ship(t_fractol *fractol);
+int					mandelbar(t_fractol *fractol);
+int					buffalo(t_fractol *fractol);
 void				draw(t_fractol *fractol);
 t_color				get_color(int iteration, t_fractol *fractol);
 t_image				*init_image(void *mlx);

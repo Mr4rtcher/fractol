@@ -6,7 +6,7 @@
 #    By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/01 04:59:36 by jabilbo           #+#    #+#              #
-#    Updated: 2020/08/04 14:24:31 by jabilbo          ###   ########.fr        #
+#    Updated: 2020/08/06 17:23:52 by jabilbo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,12 @@ DEPS = *.h
 DEPSDIR = includes
 SRC = main.c\
 	mandelbrot.c\
+	julia.c\
+	burning_ship.c\
+	mandelbar.c\
+	buffalo.c\
 	draw.c\
 	init.c\
-	julia.c\
 	keyboard.c\
 	mouse.c
 SRCDIR = srcs

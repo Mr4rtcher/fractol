@@ -6,7 +6,7 @@
 /*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 04:17:01 by jabilbo           #+#    #+#             */
-/*   Updated: 2020/08/05 21:55:46 by jabilbo          ###   ########.fr       */
+/*   Updated: 2020/08/06 17:38:04 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,20 @@ int					init_fractol(t_fractol *fractol)
 {
 	char			str_m[] = "mandelbrot";
 	char			str_j[] = "julia";
+	char			str_b[] = "burning_ship";
+	char			str_man[] = "mandelbar";
+	char			str_buf[] = "buffalo";
 
 	if (ft_strcmp(str_m, fractol->name) == 0)
 		return (mandelbrot(fractol));
-	else if (ft_strcmp(str_j, fractol->name) == 0)
+	if (ft_strcmp(str_j, fractol->name) == 0)
 		return (julia(fractol));
+	if (ft_strcmp(str_b, fractol->name) == 0)
+		return (burning_ship(fractol));
+	if (ft_strcmp(str_man, fractol->name) == 0)
+		return (mandelbar(fractol));
+	if (ft_strcmp(str_buf, fractol->name) == 0)
+		return (buffalo(fractol));
 	else
 		terminate("ERROR");
 	return (0);
