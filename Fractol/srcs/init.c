@@ -6,7 +6,7 @@
 /*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 18:09:50 by jabilbo           #+#    #+#             */
-/*   Updated: 2020/08/05 22:26:36 by jabilbo          ###   ########.fr       */
+/*   Updated: 2020/08/07 16:57:29 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_complex		init_complex(double re, double im)
 	return (complex);
 }
 
-void				set_defaults(t_fractol *fractol)
+void			set_defaults(t_fractol *fractol)
 {
 	fractol->max_iteration = 50;
 	fractol->min = init_complex(-2.0, -2.0);

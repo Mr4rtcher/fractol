@@ -6,35 +6,35 @@
 /*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/27 16:53:55 by jabilbo           #+#    #+#             */
-/*   Updated: 2020/07/29 18:30:25 by jabilbo          ###   ########.fr       */
+/*   Updated: 2020/08/07 17:04:43 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-double				interpolate(double start, double end, double interpolation)
+double			interpolate(double start, double end, double interpolation)
 {
 	return (start + ((end - start) * interpolation));
 }
 
-int					julia_motion(int x, int y, t_fractol *fractol)
+int				julia_motion(int x, int y, t_fractol *fractol)
 {
 	if (!fractol->fix_jul)
 	{
-	fractol->k = init_complex(
-		4 * ((double)x / WIDTH - 0.5),
-		4 * ((double)(HEIGHT - y) / HEIGHT - 0.5));
+		fractol->k = init_complex(
+			4 * ((double)x / WIDTH - 0.5),
+			4 * ((double)(HEIGHT - y) / HEIGHT - 0.5));
 		draw(fractol);
 	}
 	return (0);
 }
 
-int					zoom(int key, int x, int y, t_fractol *fractol)
+int				zoom(int key, int x, int y, t_fractol *fractol)
 {
 	t_complex	mouse;
 	double		interpolation;
 	double		zoom;
-	
+
 	if (key == MOUSE_SCROLL_UP || key == MOUSE_SCROLL_DOWN)
 	{
 		mouse = init_complex(

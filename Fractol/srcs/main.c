@@ -6,7 +6,7 @@
 /*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 04:17:01 by jabilbo           #+#    #+#             */
-/*   Updated: 2020/08/06 17:38:04 by jabilbo          ###   ########.fr       */
+/*   Updated: 2020/08/07 18:20:12 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,15 @@ void				terminate(char *s)
 
 int					init_fractol(t_fractol *fractol)
 {
-	char			str_m[] = "mandelbrot";
-	char			str_j[] = "julia";
-	char			str_b[] = "burning_ship";
-	char			str_man[] = "mandelbar";
-	char			str_buf[] = "buffalo";
-
-	if (ft_strcmp(str_m, fractol->name) == 0)
+	if (ft_strcmp("mandelbrot", fractol->name) == 0)
 		return (mandelbrot(fractol));
-	if (ft_strcmp(str_j, fractol->name) == 0)
+	if (ft_strcmp("julia", fractol->name) == 0)
 		return (julia(fractol));
-	if (ft_strcmp(str_b, fractol->name) == 0)
+	if (ft_strcmp("burning_ship", fractol->name) == 0)
 		return (burning_ship(fractol));
-	if (ft_strcmp(str_man, fractol->name) == 0)
+	if (ft_strcmp("mandelbar", fractol->name) == 0)
 		return (mandelbar(fractol));
-	if (ft_strcmp(str_buf, fractol->name) == 0)
+	if (ft_strcmp("buffalo", fractol->name) == 0)
 		return (buffalo(fractol));
 	else
 		terminate("ERROR");
@@ -50,12 +44,13 @@ int					init_fractol(t_fractol *fractol)
 static void			start(char *name)
 {
 	t_fractol		*fractol;
-	
+
 	if (!(fractol = (t_fractol *)ft_memalloc(sizeof(t_fractol))))
-		terminate("ERROR");;
+		terminate("ERROR");
 	fractol->name = name;
 	fractol->mlx_ptr = mlx_init();
-	if (!(fractol->win_ptr = mlx_new_window(fractol->mlx_ptr, HEIGHT, WIDTH, fractol->name)))
+	if (!(fractol->win_ptr = mlx_new_window(
+		fractol->mlx_ptr, HEIGHT, WIDTH, fractol->name)))
 		terminate("ERROR");
 	fractol->image = init_image(fractol->mlx_ptr);
 	fractol->fix_jul = true;

@@ -6,7 +6,7 @@
 /*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 12:21:20 by jabilbo           #+#    #+#             */
-/*   Updated: 2020/08/06 17:31:47 by jabilbo          ###   ########.fr       */
+/*   Updated: 2020/08/07 16:59:32 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int					mandelbrot(t_fractol *fractol)
 
 	z = init_complex(fractol->c.re, fractol->c.im);
 	iteration = 0;
-	while(iteration < fractol->max_iteration
+	while (iteration < fractol->max_iteration
 		&& pow(z.re, 2.0) + pow(z.im, 2.0) <= 4)
 	{
 		z = init_complex(

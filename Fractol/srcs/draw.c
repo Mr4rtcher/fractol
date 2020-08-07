@@ -6,7 +6,7 @@
 /*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/02 11:37:44 by jabilbo           #+#    #+#             */
-/*   Updated: 2020/08/06 17:03:02 by jabilbo          ###   ########.fr       */
+/*   Updated: 2020/08/07 18:22:12 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void			draw(t_fractol *fractol)
 	}
 	while (i-- > 0)
 		if (pthread_join(threads[i], NULL))
-	 		terminate("ERROR");
+			terminate("ERROR");
 	mlx_put_image_to_window(fractol->mlx_ptr, fractol->win_ptr,
 		fractol->image->image, 0, 0);
 }
@@ -81,14 +81,17 @@ t_color			get_color(int iteration, t_fractol *fractol)
 
 	if (!(iteration / fractol->max_iteration == 1))
 	{
-		continuous_index = iteration + 1 - (log(2) / fractol->zn) / log (2);
+		continuous_index = iteration + 1 - (log(2) / fractol->zn) / log(2);
 		color.channel[0] = 0;
 		color.channel[1] =
-			(int8_t)((unsigned char)(sin((0.001 * 8) * continuous_index + 1 + fractol->i1) * 240 + 10));
+			(int8_t)((unsigned char)(sin((0.001 * 8)
+			* continuous_index + 1 + fractol->i1) * 240 + 10));
 		color.channel[2] =
-			(int8_t)((unsigned char)(sin((0.001 * 8) * continuous_index + 2 + fractol->i2) * 240 + 10));
+			(int8_t)((unsigned char)(sin((0.001 * 8)
+			* continuous_index + 2 + fractol->i2) * 240 + 10));
 		color.channel[3] =
-			(int8_t)((unsigned char)(sin((0.001 * 8) * continuous_index + 4 + fractol->i3) * 240 + 10));
+			(int8_t)((unsigned char)(sin((0.001 * 8)
+			* continuous_index + 4 + fractol->i3) * 240 + 10));
 	}
 	else
 	{
