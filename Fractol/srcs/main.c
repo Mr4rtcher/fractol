@@ -6,7 +6,7 @@
 /*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 04:17:01 by jabilbo           #+#    #+#             */
-/*   Updated: 2020/08/07 18:20:12 by jabilbo          ###   ########.fr       */
+/*   Updated: 2020/08/07 22:42:55 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ int					init_fractol(t_fractol *fractol)
 {
 	if (ft_strcmp("mandelbrot", fractol->name) == 0)
 		return (mandelbrot(fractol));
-	if (ft_strcmp("julia", fractol->name) == 0)
+	else if (ft_strcmp("julia", fractol->name) == 0)
 		return (julia(fractol));
-	if (ft_strcmp("burning_ship", fractol->name) == 0)
+	else if (ft_strcmp("burning_ship", fractol->name) == 0)
 		return (burning_ship(fractol));
-	if (ft_strcmp("mandelbar", fractol->name) == 0)
+	else if (ft_strcmp("mandelbar", fractol->name) == 0)
 		return (mandelbar(fractol));
-	if (ft_strcmp("buffalo", fractol->name) == 0)
+	else if (ft_strcmp("buffalo", fractol->name) == 0)
 		return (buffalo(fractol));
 	else
 		terminate("ERROR");
@@ -48,6 +48,7 @@ static void			start(char *name)
 	if (!(fractol = (t_fractol *)ft_memalloc(sizeof(t_fractol))))
 		terminate("ERROR");
 	fractol->name = name;
+	init_fractol(fractol);
 	fractol->mlx_ptr = mlx_init();
 	if (!(fractol->win_ptr = mlx_new_window(
 		fractol->mlx_ptr, HEIGHT, WIDTH, fractol->name)))
