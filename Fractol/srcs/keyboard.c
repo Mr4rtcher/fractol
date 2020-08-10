@@ -6,7 +6,7 @@
 /*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 12:56:06 by jabilbo           #+#    #+#             */
-/*   Updated: 2020/08/10 19:06:09 by jabilbo          ###   ########.fr       */
+/*   Updated: 2020/08/10 19:10:53 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,9 @@ int				key_press(int key, t_fractol *fractol)
 	if (key == MAIN_PAD_SPACE)
 		fractol->fix_jul = !fractol->fix_jul;
 	if (key == MAIN_PAD_PLUS && fractol->max_iteration < 1000)
-		fractol->max_iteration++;
+		fractol->max_iteration += 2;
 	else if (key == MAIN_PAD_MINUS && fractol->max_iteration > 1)
-		fractol->max_iteration--;
+		fractol->max_iteration -= 2;
 	if (key == 116 || key == 121)
 		had(key, fractol);
 	if (key == 85 || key == 83 || key == 84
