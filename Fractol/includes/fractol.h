@@ -6,7 +6,7 @@
 /*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 06:11:05 by jabilbo           #+#    #+#             */
-/*   Updated: 2020/08/06 17:42:01 by jabilbo          ###   ########.fr       */
+/*   Updated: 2020/08/10 18:59:25 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct		s_fractol
 	double			zn;
 	char			*name;
 	bool			fix_jul;
+	double			had;
 	int				i1;
 	int				i2;
 	int				i3;
@@ -95,5 +96,6 @@ void				move(int key, t_fractol *fractol);
 int					zoom(int key, int x, int y, t_fractol *fractol);
 double				interpolate(double start, double end, double interpolation);
 void				terminate(char *s);
+void				had(int key, t_fractol *fractol);
 
 #endif

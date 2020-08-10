@@ -6,7 +6,7 @@
 /*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 18:09:50 by jabilbo           #+#    #+#             */
-/*   Updated: 2020/08/07 16:57:29 by jabilbo          ###   ########.fr       */
+/*   Updated: 2020/08/10 18:59:32 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,5 @@ void			set_defaults(t_fractol *fractol)
 	fractol->i1 = 0;
 	fractol->i2 = 0;
 	fractol->i3 = 0;
+	fractol->had = 2.0;
 }

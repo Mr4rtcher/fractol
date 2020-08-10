@@ -6,7 +6,7 @@
 /*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 12:21:20 by jabilbo           #+#    #+#             */
-/*   Updated: 2020/08/07 16:59:32 by jabilbo          ###   ########.fr       */
+/*   Updated: 2020/08/10 18:52:48 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ int					mandelbrot(t_fractol *fractol)
 		&& pow(z.re, 2.0) + pow(z.im, 2.0) <= 4)
 	{
 		z = init_complex(
-		pow(z.re, 2.0) - pow(z.im, 2.0) + fractol->c.re,
-			2.0 * z.re * z.im + fractol->c.im);
+			pow(z.re, 2.0) - pow(z.im, 2.0) + fractol->c.re,
+			fractol->had * z.re * z.im + fractol->c.im);
 		fractol->zn = sqrt(z.re * z.re + z.im * z.im);
 		iteration++;
 	}

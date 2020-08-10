@@ -6,7 +6,7 @@
 /*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 17:23:07 by jabilbo           #+#    #+#             */
-/*   Updated: 2020/08/07 16:56:46 by jabilbo          ###   ########.fr       */
+/*   Updated: 2020/08/10 18:52:36 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int				buffalo(t_fractol *fractol)
 	{
 		z = init_complex(
 			fabs(pow(z.re, 2.0) - pow(z.im, 2.0)) + fractol->c.re,
-			-2.0 * z.re * fabs(z.im) + fractol->c.im);
+			-fractol->had * z.re * fabs(z.im) + fractol->c.im);
 		fractol->zn = sqrt(z.re * z.re + z.im * z.im);
 		iteration++;
 	}

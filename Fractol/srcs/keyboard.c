@@ -6,7 +6,7 @@
 /*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 12:56:06 by jabilbo           #+#    #+#             */
-/*   Updated: 2020/08/07 18:24:16 by jabilbo          ###   ########.fr       */
+/*   Updated: 2020/08/10 19:06:09 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,14 @@ void			color_key(int key, t_fractol *fractol)
 		fractol->i3 = 0;
 }
 
+void			had(int key, t_fractol *fractol)
+{
+	if (key == 116 && fractol->had < 20)
+		fractol->had += 0.1;
+	else if (key == 121 && fractol->had > -20)
+		fractol->had -= 0.1;
+}
+
 int				key_press(int key, t_fractol *fractol)
 {
 	if (key == MAIN_PAD_ESC)
@@ -72,6 +80,8 @@ int				key_press(int key, t_fractol *fractol)
 		fractol->max_iteration++;
 	else if (key == MAIN_PAD_MINUS && fractol->max_iteration > 1)
 		fractol->max_iteration--;
+	if (key == 116 || key == 121)
+		had(key, fractol);
 	if (key == 85 || key == 83 || key == 84
 		|| key == 86 || key == 88 || key == 87
 		|| key == 89 || key == 91 || key == 92)

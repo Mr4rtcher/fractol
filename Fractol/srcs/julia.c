@@ -6,7 +6,7 @@
 /*   By: jabilbo <jabilbo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 21:22:21 by jabilbo           #+#    #+#             */
-/*   Updated: 2020/08/07 17:02:00 by jabilbo          ###   ########.fr       */
+/*   Updated: 2020/08/10 18:52:45 by jabilbo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int					julia(t_fractol *fractol)
 	{
 		z = init_complex(
 		pow(z.re, 2.0) - pow(z.im, 2.0) + fractol->k.re,
-					2.0 * z.re * z.im + fractol->k.im);
+			fractol->had * z.re * z.im + fractol->k.im);
 		fractol->zn = sqrt(pow(z.re, 2.0) + pow(z.im, 2.0));
 		iteration++;
 	}
